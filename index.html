@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор кредита та депозиту</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>💰 Калькулятор кредита та депозиту</h1>
+            <p class="subtitle">Розрахуйте вашу фінансову вигоду</p>
+        </header>
+
+        <main class="calculator-wrapper">
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="loan">Кредит</button>
+                <button class="mode-btn" data-mode="deposit">Депозит</button>
+            </div>
+
+            <!-- Form Section -->
+            <form class="calculator-form" id="calculatorForm">
+                <div class="form-group">
+                    <label for="amount">Сума (грн)</label>
+                    <input type="number" id="amount" placeholder="Введіть суму" min="0" step="0.01" required>
+                    <small class="help-text">Сума кредиту або депозиту</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestRate">Річна процентна ставка (%)</label>
+                    <input type="number" id="interestRate" placeholder="Введіть ставку" min="0" max="100" step="0.01" required>
+                    <small class="help-text">Річний відсоток</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="period">Період (місяці)</label>
+                    <input type="number" id="period" placeholder="Введіть період" min="1" step="1" required>
+                    <small class="help-text">Тривалість у місяцях</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="compounding">Період капіталізації</label>
+                    <select id="compounding">
+                        <option value="monthly">Щомісячна</option>
+                        <option value="quarterly">Щоквартальна</option>
+                        <option value="annual">Щорічна</option>
+                    </select>
+                    <small class="help-text">Як часто нараховуються відсотки</small>
+                </div>
+
+                <button type="submit" class="btn-calculate">Розрахувати</button>
+            </form>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>📊 Hasil Розрахунків</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <span class="result-label">Початкова сума</span>
+                        <span class="result-value" id="initialAmount">0 грн</span>
+                    </div>
+                    
+                    <div class="result-card">
+                        <span class="result-label">Нараховані відсотки</span>
+                        <span class="result-value interest" id="interestAmount">0 грн</span>
+                    </div>
+                    
+                    <div class="result-card highlight">
+                        <span class="result-label">Загальна сума</span>
+                        <span class="result-value total" id="totalAmount">0 грн</span>
+                    </div>
+                    
+                    <div class="result-card">
+                        <span class="result-label">Місячний платіж</span>
+                        <span class="result-value" id="monthlyPayment">0 грн</span>
+                    </div>
+                </div>
+
+                <!-- Detailed Breakdown -->
+                <div class="breakdown-section">
+                    <h3>📋 Деталізований розрахунок</h3>
+                    <table class="breakdown-table" id="breakdownTable">
+                        <thead>
+                            <tr>
+                                <th>Період</th>
+                                <th>Основна сума</th>
+                                <th>Нараховані відсотки</th>
+                                <th>Залишок</th>
+                            </tr>
+                        </thead>
+                        <tbody id="breakdownBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn-save" id="saveBtn">💾 Зберегти результати</button>
+                    <button class="btn-print" id="printBtn">🖨️ Друкувати</button>
+                    <button class="btn-reset" id="resetBtn">🔄 Новий розрахунок</button>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <p>👆 Заповніть форму та натисніть "Розрахувати"</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Лабораторна робота 6 - Single Page Application | Калькулятор кредита та депозиту</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
